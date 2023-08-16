@@ -12,11 +12,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    static final String[] foods = {
+    static final String[] FOODS = {
             "Nasi Goreng  ", "Mie Goreng   ", "Nasi + Ayam  ", "Es Teh Manis ", "Es Jeruk     ",
     };
 
-    static final int[] price = {
+    static final int[] PRICE = {
             15_000, 13_000, 18_000, 3_000, 5_000,
     };
 
@@ -46,19 +46,19 @@ public class Main {
                     scanner.close();
                     break;
                 case 1:
-                    qtyPerFood[0] = getQuantity(foods[0], price[0]);
+                    qtyPerFood[0] = getQuantity(FOODS[0], PRICE[0]);
                     break;
                 case 2:
-                    qtyPerFood[1] = getQuantity(foods[1], price[1]);
+                    qtyPerFood[1] = getQuantity(FOODS[1], PRICE[1]);
                     break;
                 case 3:
-                    qtyPerFood[2] = getQuantity(foods[2], price[2]);
+                    qtyPerFood[2] = getQuantity(FOODS[2], PRICE[2]);
                     break;
                 case 4:
-                    qtyPerFood[3] = getQuantity(foods[3], price[3]);
+                    qtyPerFood[3] = getQuantity(FOODS[3], PRICE[3]);
                     break;
                 case 5:
-                    qtyPerFood[4] = getQuantity(foods[4], price[4]);
+                    qtyPerFood[4] = getQuantity(FOODS[4], PRICE[4]);
                     break;
                 case 99:
                     showConfirmation(qtyPerFood);
@@ -146,9 +146,9 @@ public class Main {
 
         for (short qty: qtyPerFood) {
             if (qty != 0){
-                System.out.println(foods[index] + "   "+ qty + "      "+ changeFormatNumber(qty * price[index]));
+                System.out.println(FOODS[index] + "   "+ qty + "      "+ changeFormatNumber(qty * PRICE[index]));
                 sumQty += qty;
-                sumPrice += qty * price[index];
+                sumPrice += qty * PRICE[index];
             }
             index++;
         }
@@ -194,10 +194,10 @@ public class Main {
 
             for (short qty: qtyPerFood) {
                 if (qty != 0){
-                    bwr.write(foods[index] + "   "+ qty + "      "+ changeFormatNumber(qty * price[index]));
+                    bwr.write(FOODS[index] + "   "+ qty + "      "+ changeFormatNumber(qty * PRICE[index]));
                     bwr.newLine();
                     sumQty += qty;
-                    sumPrice += qty * price[index];
+                    sumPrice += qty * PRICE[index];
                 }
                 index++;
             }
@@ -231,7 +231,7 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
         String formattedDateTime = currentDateTime.format(formatter);
 
-        return formattedDateTime + " - Struk Pembayaran.txt";
+        return formattedDateTime + " - Struk pembayaran.txt";
     }
 
     static String changeFormatNumber(int number){
