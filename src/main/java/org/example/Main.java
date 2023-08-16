@@ -20,8 +20,8 @@ public class Main {
             15_000, 13_000, 18_000, 3_000, 5_000,
     };
 
-    static boolean isShowListMenu = true;
     public static void main(String[] args) {
+        boolean isShowListMenu = true;
         short[] qtyPerFood = {
                 0,0,0,0,0
         };
@@ -225,6 +225,9 @@ public class Main {
         }
     }
 
+    /**
+     * Ini adalah method untuk mendapatkan nama struk yang unik
+     */
     static String getStrucName(){
         LocalDateTime currentDateTime = LocalDateTime.now();
 
@@ -234,6 +237,9 @@ public class Main {
         return formattedDateTime + " - Struk pembayaran.txt";
     }
 
+    /**
+     * Ini adalah method untuk mengubah format angka ribuan ( 3000 -> 3.000)
+     */
     static String changeFormatNumber(int number){
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
         DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
