@@ -22,7 +22,7 @@ public class Main {
 
     public static void main(String[] args) {
         boolean isShowListMenu = true;
-        short[] qtyPerFood = {
+        short[] qtyEachFood = {
                 0,0,0,0,0
         };
 
@@ -46,22 +46,22 @@ public class Main {
                     scanner.close();
                     break;
                 case 1:
-                    qtyPerFood[0] = getQuantity(FOODS[0], PRICE[0]);
+                    qtyEachFood[0] = getQuantity(FOODS[0], PRICE[0]);
                     break;
                 case 2:
-                    qtyPerFood[1] = getQuantity(FOODS[1], PRICE[1]);
+                    qtyEachFood[1] = getQuantity(FOODS[1], PRICE[1]);
                     break;
                 case 3:
-                    qtyPerFood[2] = getQuantity(FOODS[2], PRICE[2]);
+                    qtyEachFood[2] = getQuantity(FOODS[2], PRICE[2]);
                     break;
                 case 4:
-                    qtyPerFood[3] = getQuantity(FOODS[3], PRICE[3]);
+                    qtyEachFood[3] = getQuantity(FOODS[3], PRICE[3]);
                     break;
                 case 5:
-                    qtyPerFood[4] = getQuantity(FOODS[4], PRICE[4]);
+                    qtyEachFood[4] = getQuantity(FOODS[4], PRICE[4]);
                     break;
                 case 99:
-                    showConfirmation(qtyPerFood);
+                    showConfirmation(qtyEachFood);
                     System.out.println();
                     byte pilihan1 = -1;
                     try {
@@ -72,7 +72,7 @@ public class Main {
                     }
                     switch (pilihan1){
                         case 1:
-                            printStruc(qtyPerFood, getStrucName());
+                            printReceipt(qtyEachFood, getReceiptName());
                             scanner.close();
                             isShowListMenu = false;
                             break;
@@ -134,7 +134,7 @@ public class Main {
         }
     }
 
-    static void showConfirmation(short[] qtyPerFood){
+    static void showConfirmation(short[] qtyEachFood){
         System.out.println("================================");
         System.out.println("Konfirmasi dan Pembayaran");
         System.out.println("================================");
@@ -144,7 +144,7 @@ public class Main {
         short sumQty = 0;
         int sumPrice = 0;
 
-        for (short qty: qtyPerFood) {
+        for (short qty: qtyEachFood) {
             if (qty != 0){
                 System.out.println(FOODS[index] + "   "+ qty + "      "+ changeFormatNumber(qty * PRICE[index]));
                 sumQty += qty;
@@ -161,7 +161,7 @@ public class Main {
         System.out.println("0. Keluar aplikasi");
     }
 
-    static void printStruc(short[] qtyPerFood, String fileName){
+    static void printReceipt(short[] qtyPerFood, String fileName){
         try{
             File file = new File(fileName);
             if (file.createNewFile()){
@@ -226,9 +226,9 @@ public class Main {
     }
 
     /**
-     * Ini adalah method untuk mendapatkan nama struk yang unik
+     * Ini adalah method untuk mendapatkan nama struk
      */
-    static String getStrucName(){
+    static String getReceiptName(){
         LocalDateTime currentDateTime = LocalDateTime.now();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
